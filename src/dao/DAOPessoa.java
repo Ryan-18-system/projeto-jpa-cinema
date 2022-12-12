@@ -2,6 +2,7 @@ package dao;
 
 
 
+import java.sql.Array;
 import java.util.List;
 
 import jakarta.persistence.NoResultException;
@@ -22,7 +23,7 @@ public class DAOPessoa extends DAO<Pessoa>{
 		}
 	}
 	public List<Pessoa> readAll(){
-		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p order by p.id", Pessoa.class);
+		TypedQuery<Pessoa> query = manager.createQuery("select p from Pessoa p join fetch p.filmes", Pessoa.class);
 		return  query.getResultList();
 	}
 	public Pessoa readByCpf(String cpf) {
@@ -33,6 +34,14 @@ public class DAOPessoa extends DAO<Pessoa>{
 		}catch (Exception e) {
 			return null;
 		}
+		
+	}
+	
+	public List<Pessoa>  atrizDiretoraTrabalhamEmUmFilme(){
+		TypedQuery<Pessoa> q = manager.createQuery("select p from Pessoa p where p.funcao =:funcao1 or p.funcao =:funcao2 ", Pessoa.class);
+		q.setParameter("funcao1","diretora");
+		q.setParameter("funcao2", "atriz");
+		return q.getResultList();
 		
 	}
 

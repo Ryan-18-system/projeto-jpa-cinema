@@ -52,25 +52,14 @@ public class TelaFilme {
 	private JLabel label_10;
 	private JTextField textField_10;
 	private JLabel label_11;
-	private JTextField textField_11;
+
 
 
 
 	/**
 	 * Launch the application.
 	 */
-	//	public static void main(String[] args) {
-	//		EventQueue.invokeLater(new Runnable() {
-	//			public void run() {
-	//				try {
-	//					TelaTelefone window = new TelaTelefone();
-	//					window.frame.setVisible(true);
-	//				} catch (Exception e) {
-	//					e.printStackTrace();
-	//				}
-	//			}
-	//		});
-	//	}
+	
 
 	/**
 	 * Create the application.
@@ -93,7 +82,6 @@ public class TelaFilme {
 			public void windowOpened(WindowEvent e) {
 				listagem();
 			}
-			
 			
 		});
 
@@ -138,7 +126,7 @@ public class TelaFilme {
 		textField_1.setBounds(99, 293, 200, 24);
 		frame.getContentPane().add(textField_1);
 
-		label_2 = new JLabel("Nome do Estúdio");
+		label_2 = new JLabel("Cnpj Estúdio");
 		label_2.setHorizontalAlignment(SwingConstants.LEFT);
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_2.setBounds(21, 223, 132, 14);
@@ -209,17 +197,16 @@ public class TelaFilme {
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(textField_10.getText().isEmpty()||textField_11.getText().isEmpty()||textField_2.getText().isEmpty()) {
+					if(textField_10.getText().isEmpty()||textField_2.getText().isEmpty()) {
 						label.setText("campo vazio");
 						return;
 					}else {
 						String nomeFilme = textField_10.getText();
-						String nomeEstudio =textField_2.getText();
-						String dataLancamento = textField_11.getText();
-						Fachada.criarFilme(nomeFilme, dataLancamento);
-						Fachada.addEstudioAoFilme(nomeEstudio, nomeFilme);
-						label.setText("Filme adicionado com Sucesso");
+						String cnpj =textField_2.getText();
+						Fachada.criarFilme(nomeFilme);
+						Fachada.addEstudioAoFilme(cnpj, nomeFilme);
 						listagem();
+						label.setText("Filme adicionado com Sucesso");
 					}
 					
 				} catch(Exception ex)  {
@@ -244,15 +231,7 @@ public class TelaFilme {
 		frame.getContentPane().add(textField_10);
 		textField_10.setColumns(10);
 		
-		label_11 = new JLabel("Data de Lançamento");
-		label_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_11.setBounds(397, 223, 119, 15);
-		frame.getContentPane().add(label_11);
-		
-		textField_11 = new JTextField();
-		textField_11.setBounds(384, 251, 132, 19);
-		frame.getContentPane().add(textField_11);
-		textField_11.setColumns(10);
+	
 
 		frame.setVisible(true);
 
@@ -277,7 +256,7 @@ public class TelaFilme {
 			table.getColumnModel().getColumn(2).setMinWidth(100);
 			table.getColumnModel().getColumn(3).setMinWidth(100);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS); 
-
+		
 			//atualizar horario da listagem no titulo da janela
 			frame.setTitle("Filme  -- "+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss")));
 

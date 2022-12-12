@@ -9,8 +9,9 @@ public class Deletar {
 			Fachada.inicializar();
 
 			//Fachada.apagarFilme("The Batman");
-			Fachada.apagarFilmePorId(3);
-			System.out.println("apagou projetoX");
+//			Fachada.apagarFilmePorId(853L);
+			Fachada.apagarPessoa("07137978002");
+			System.out.println("apagou Ryan");
 
 		} catch (Exception e) {
 			System.out.println("--->" + e.getMessage());

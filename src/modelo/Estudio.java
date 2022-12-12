@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Estudio {
 	private String nome;
 	@Column(length = 14)
 	private String cnpj;
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "estudio",cascade = CascadeType.REMOVE,orphanRemoval=true)
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "estudio",cascade = CascadeType.ALL,orphanRemoval=true)
 	private List<Filme> filmes = new ArrayList<>();
 
 	@Override

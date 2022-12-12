@@ -1,5 +1,7 @@
 package appconsole;
 
+import java.time.LocalDate;
+
 import regra.negocio.Fachada;
 
 public class Cadastro {
@@ -8,18 +10,18 @@ public class Cadastro {
 		try {
 			Fachada.inicializar();
 			System.out.println("Cadastrando Atrizes e Atores.....");
-			Fachada.criarPessoa("Laisa Galleti", "10/07/2002", "63899854012", "atriz", 60000.0);
-			Fachada.criarPessoa("Maria Rita", "24/02/1999", "34930011000", "atriz", 40000.0);
-			Fachada.criarPessoa("João Paulo", "24/02/1998", "86897118052", "ator", 1000.0);
-			Fachada.criarPessoa("Pedrinho", "22/05/2000", "54697755006", "ator", 100.0);
-			Fachada.criarPessoa("Paola", "10/12/1969", "81175072001", "atriz", 70000.0);
-			Fachada.criarPessoa("Ryan Nóbrega", "25/04/2002", "07137978002", "diretor", 80000.0);
+			Fachada.criarPessoa("Laisa Galleti",LocalDate.of(2002, 7, 10), "63899854012", "atriz", 60000.0);
+			Fachada.criarPessoa("Maria Rita",LocalDate.of(1999, 2, 24), "34930011000", "atriz", 40000.0);
+			Fachada.criarPessoa("João Paulo",LocalDate.of(1998, 2, 24), "86897118052", "ator", 1000.0);
+			Fachada.criarPessoa("Pedrinho",LocalDate.of(2000, 5, 22), "54697755006", "ator", 100.0);
+			Fachada.criarPessoa("Paola",LocalDate.of(1969, 12, 10), "81175072001", "atriz", 70000.0);
+			Fachada.criarPessoa("Ryan Nóbrega",LocalDate.of(2002, 4, 25), "07137978002", "diretor", 80000.0);
 			
 			System.out.println("Cadastrando Filmes.....");
-			Fachada.criarFilme("simplesmente acontece", "24/05/2014");
-			Fachada.criarFilme("The Batman", "23/01/2012");
-			Fachada.criarFilme("Projeto X", "12/02/2010");
-			Fachada.criarFilme("Homem de aço", "13/12/2007");
+			Fachada.criarFilme("simplesmente acontece");
+			Fachada.criarFilme("The Batman");
+			Fachada.criarFilme("Projeto X");
+			Fachada.criarFilme("Homem de aço");
 			
 		
 			
@@ -57,10 +59,10 @@ public class Cadastro {
 			
 			
 			System.out.println("Adicionando Estudio aos Filmes.....");
-			Fachada.addEstudioAoFilme("warner bros", "Projeto X");
-			Fachada.addEstudioAoFilme("warner bros", "The Batman");
-			Fachada.addEstudioAoFilme("sony pictures", "Homem de aço");
-			Fachada.addEstudioAoFilme("universal pictures", "simplesmente acontece");
+			Fachada.addEstudioAoFilme("98251140000137", "Projeto X");
+			Fachada.addEstudioAoFilme("98251140000137", "The Batman");
+			Fachada.addEstudioAoFilme("15700043000157", "Homem de aço");
+			Fachada.addEstudioAoFilme("13933688000104", "simplesmente acontece");
 			
 		}catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -136,16 +136,16 @@ public class TelaPrincipal {
 
 
 		//----------timer----------------
-//		timer = new Timer(0, new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				String dt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-//				frame.setTitle("Filmes - "+ dt);
-//			}
-//		});
-//		timer.setRepeats(true);
-//		timer.setDelay(1000);	//1segundos
-//		timer.start();			//inicia o temporizador
+		timer = new Timer(0, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String dt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+				frame.setTitle("Filmes - "+ dt);
+			}
+		});
+		timer.setRepeats(true);
+		timer.setDelay(1000);	//1segundos
+		timer.start();			//inicia o temporizador
 	}
 
 }

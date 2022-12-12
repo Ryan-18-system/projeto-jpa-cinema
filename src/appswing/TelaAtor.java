@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -198,7 +199,7 @@ public class TelaAtor {
 					String cpf = textField_3.getText();
 					String funcao = textField_4.getText();
 					Double cache = Double.parseDouble(textField_10.getText());
-					Fachada.criarPessoa(nome, data, cpf, funcao, cache);
+					Fachada.criarPessoa(nome, LocalDate.parse(data), cpf, funcao, cache);
 					label.setText("Atriz/Ator cadastrada");
 					listagem();
 				}

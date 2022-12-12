@@ -20,7 +20,7 @@ public class DAOEstudio extends DAO<Estudio> {
 	}
 
 	public List<Estudio> readAll() {
-		TypedQuery<Estudio> query = manager.createQuery("select e from Estudio e order by e.id", Estudio.class);
+		TypedQuery<Estudio> query = manager.createQuery("from Estudio e join fetch e.filmes", Estudio.class);
 		return query.getResultList();
 	}
 
@@ -34,6 +34,10 @@ public class DAOEstudio extends DAO<Estudio> {
 			return null;
 		}
 
+	}
+	public List<Estudio> estudiosComMaisDe2Filmes(){
+		TypedQuery<Estudio> query = manager.createQuery("select e from Estudio e where size(e.filmes) >= 2",Estudio.class);
+		return query.getResultList();
 	}
 
 }

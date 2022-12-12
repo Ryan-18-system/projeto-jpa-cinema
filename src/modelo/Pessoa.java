@@ -1,9 +1,11 @@
 package modelo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,10 +25,10 @@ public class Pessoa {
 	private String nome;
 	@Column(length = 11)
 	private String cpf;
-	private String dtnascimento;
+	private LocalDate dtnascimento;
 	@Column(length = 20)
 	private String funcao;
-	@ManyToMany(fetch = FetchType.LAZY,mappedBy = "funcionarios")
+	@ManyToMany(fetch = FetchType.LAZY,mappedBy = "funcionarios",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
 	private List<Filme> filmes = new ArrayList<>();
 	@Override
 	public int hashCode() {
@@ -47,7 +49,7 @@ public class Pessoa {
 
 	private Double cache;
 
-	public Pessoa(String nome, String dtnascimento, String cpf, String funcao, Double cache) {
+	public Pessoa(String nome, LocalDate dtnascimento, String cpf, String funcao, Double cache) {
 		super();
 		this.nome = nome;
 		this.dtnascimento = dtnascimento;
@@ -56,7 +58,7 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Pessoa(String nome, String dtnascimento, String cpf, String funcao) {
+	public Pessoa(String nome, LocalDate dtnascimento, String cpf, String funcao) {
 		super();
 		this.nome = nome;
 		this.dtnascimento = dtnascimento;
@@ -77,11 +79,13 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getDtnascimento() {
+	
+
+	public LocalDate getDtnascimento() {
 		return dtnascimento;
 	}
 
-	public void setDtnascimento(String dtnascimento) {
+	public void setDtnascimento(LocalDate dtnascimento) {
 		this.dtnascimento = dtnascimento;
 	}
 

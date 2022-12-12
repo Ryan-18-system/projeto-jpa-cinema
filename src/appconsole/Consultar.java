@@ -3,6 +3,7 @@ package appconsole;
 import java.util.List;
 
 import modelo.Estudio;
+import modelo.Filme;
 import modelo.Pessoa;
 import regra.negocio.Fachada;
 
@@ -10,15 +11,17 @@ public class Consultar {
 	public Consultar() {
 	
 		try {
-			System.out.println("Pesquisando se o estúdio possuem atrizes/diretoras");
+			System.out.println("Pesquisando Atrizes/Diretoras");
 			Fachada.inicializar();
-			List<Pessoa> atrizes = Fachada.atrizDiretoraTrabalhamEmUmEstudio("universal pictures", "diretora");
-			for(Pessoa p : atrizes) {
-				System.out.println(p.getNome() + " - " + p.getFuncao());
+			List<Pessoa> funcionariasFemininas = Fachada.atrizDiretoraTrabalhamEmUmFilme();
+			for(Pessoa p : funcionariasFemininas) {
+				System.out.println("Atriz----> "+ p.getNome());
 			}
-			System.out.println("Pesquisando estúdio pelo Filme");
-			Estudio estudio = Fachada.pesquisarEstudioPeloFilme("simplesmente acontece");
-			System.out.println(estudio.getNome());
+			System.out.println("Pesquisando Estudios que tem mais de 2 filmes");
+			List<Estudio> estudiosMais2Filmes = Fachada.estudiosComMaisDe2Filmes();
+			for(Estudio e: estudiosMais2Filmes) {
+				System.out.println(e.getNome());
+			}
 		}catch (Exception e) {
 			System.out.println(e);
 		}

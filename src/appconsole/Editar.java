@@ -7,7 +7,7 @@ public class Editar {
 		System.out.println("alterando...");
 		try {
 			Fachada.inicializar();			
-			Fachada.editarFuncao("63899854012", "diretora");
+			Fachada.editarFuncao("63899854012", "diretora"); //alterando função de Ryan que era diretor para ator
 			System.out.println("alterou a função para diretora");
 
 		} catch (Exception e) {

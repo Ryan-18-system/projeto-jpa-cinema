@@ -24,9 +24,9 @@ public class Filme {
 	@Column(length = 50)
 	private String nome;
 	private LocalDate dtLancamento;
-	@ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+	@ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
 	private Estudio estudio;
-	@ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+	@ManyToMany(fetch = FetchType.LAZY,cascade ={CascadeType.MERGE,CascadeType.PERSIST})
 	private List<Pessoa> funcionarios = new ArrayList<>();
 
 	public Filme(String nome) {
